@@ -8,10 +8,8 @@ class Bolma < Formula
   depends_on "rust" => :build
 
   def install
-    # Generate the project structure via setup.rb
-    system "ruby", "setup.rb"
+    system RUBY_PATH, "setup.rb"
 
-    # Move into the generated crate directory and install via Homebrew's std_cargo_args
     cd "Bolma" do
       system "cargo", "install", *std_cargo_args
     end
